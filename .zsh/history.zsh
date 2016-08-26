@@ -1,6 +1,6 @@
-STSIZE=5000
+STSIZE=5000000
 HISTFILE=~/.zsh_history
-SAVEHIST=5000
+SAVEHIST=5000000
 setopt appendhistory
 setopt sharehistory
 setopt incappendhistory

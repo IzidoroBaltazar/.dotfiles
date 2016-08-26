@@ -19,21 +19,21 @@ alias vpn='sudo openvpn /etc/openvpn/frinx.ovpn'
 alias stopVpn='sudo pkill openvpn'
 
 getIpFunc() {
-    ansible-playbook -i hosts ~/ws/scripts-repo/releng/ansible/vsphere/read_ip.yml --extra-vars "guestname=$1"
+    ansible-playbook -i ~/ws/scripts-repo/releng/ansible/hosts/jenkins ~/ws/scripts-repo/releng/ansible/read_ip_vm.yml --extra-vars "guestname=$1"
 }
 
 createVmFunc() {
-    ansible-playbook -i hosts ~/ws/scripts-repo/releng/ansible/vsphere/create.yml --extra-vars "guestname=$1 template=$2"
+    echo `ansible-playbook -i ~/ws/scripts-repo/releng/ansible/hosts/jenkins ~/ws/scripts-repo/releng/ansible/create_vm.yml --extra-vars "guestname=$1 template=$2" | tee /dev/tty | grep vm.ansible_facts.hw_eth0.ipaddresses | awk '{gsub(/"/, "", $2); print $2}'`
 }
 
 destroyVmFunc() {
-    ansible-playbook -i hosts ~/ws/scripts-repo/releng/ansible/vsphere/destroy.yml --extra-vars "guestname=$1"
+    ansible-playbook -i ~/ws/scripts-repo/releng/ansible/hosts/jenkins ~/ws/scripts-repo/releng/ansible/destroy_vm.yml --extra-vars "guestname=$1"
 }
 
 alias createVm=createVmFunc
 alias destroyVm=destroyVmFunc
 alias getIp=getIpFunc
-alias getVms='ansible-playbook -i hosts ~/ws/scripts-repo/releng/ansible/vsphere/get_all_names.yml'
+alias getVms='ansible-playbook -i ~/ws/scripts-repo/releng/ansible/hosts/jenkins ~/ws/scripts-repo/releng/ansible/get_all_vm_names.yml'
 
 connect() {
     load_key $1
