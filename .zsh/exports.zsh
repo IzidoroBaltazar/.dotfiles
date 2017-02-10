@@ -13,3 +13,5 @@ export GREP_OPTIONS='--color=auto'
 export WORKON_HOME=~/virtualenvs
 source ~/.local/bin/virtualenvwrapper.sh
 export PIP_VIRTUALENV_BASE=~/virtualenvs
+
+export EDITOR=nvim
