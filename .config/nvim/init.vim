@@ -4,11 +4,11 @@ scriptencoding utf-8
 " Automatically install vim-plug and run PlugInstall if vim-plug not found
 "
 "This parameter might be necessary behind Proxy
-"let $GIT_SSL_NO_VERIFY = 'true'
+let $GIT_SSL_NO_VERIFY = 'true'
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
     "if behind proxy use --insecure switch
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+  silent !curl --insecure -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
@@ -26,6 +26,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-fugitive'
+Plug 'nvie/vim-flake8'
+Plug 'vim-syntastic/syntastic'
 
 Plug 'itchyny/lightline.vim'
 
@@ -613,24 +615,24 @@ vmap <C-Down> <C-S-Down>
 "nmap <F4> :call Fxxd()<Enter>
 "imap <F4> <C-o>:call Fxxd()<Enter>
 "vmap <F4> <Esc>:call Fxxd()<Enter>gv
-"
-"function! DiffOrig()
-"	if &diff
-"		diffoff!
-"		wincmd o
-"	else
-"		let ftype = &filetype
-"		let actualfilename=expand('%:p')
-"		vert new
-"		setlocal bt=nofile
-"		r #
-"		let &titlestring = "saved copy" . " <-> " . actualfilename
-"		0d_
-"		exe "setlocal filetype=" . ftype
-"		diffthis | wincmd p | diffthis
-"	endif
-"endfunction
-"
+
+function! DiffOrig()
+	if &diff
+		diffoff!
+		wincmd o
+	else
+		let ftype = &filetype
+		let actualfilename=expand('%:p')
+		vert new
+		setlocal bt=nofile
+		r #
+		let &titlestring = "saved copy" . " <-> " . actualfilename
+		0d_
+		exe "setlocal filetype=" . ftype
+		diffthis | wincmd p | diffthis
+	endif
+endfunction
+
 "function! DiffCCPred()
 "	if &diff
 "		diffoff!
@@ -721,9 +723,13 @@ vmap <S-F10> <Esc>:qa<Enter>gv
 "TODO show SCCS + show featured
 
 if g:VCS_name == "git"
-    nmap <F5> :Gdiff<Enter>
-    imap <F5> <C-o>:Gdiff<Enter>
-    vmap <F5> <Esc>:Gdiff<Enter>gv
+    nmap <F5> :call DiffOrig()<Enter>
+    imap <F5> <C-o>:call DiffOrig()<Enter>
+    vmap <F5> <Esc>:call DiffOrig()<Enter>gv
+
+    " nmap <F5> :Gdiff<Enter>
+    " imap <F5> <C-o>:Gdiff<Enter>
+    " vmap <F5> <Esc>:Gdiff<Enter>gv
 
     nmap <F6> :Gviff BRANCH<Enter>
     imap <F6> <C-o>:Gvdiff BRANCH<Enter>
@@ -1635,3 +1641,14 @@ let g:lightline = {
 "      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
 "      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
 "      \ }
+"
+"vim Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height=2
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
