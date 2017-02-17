@@ -19,49 +19,53 @@ endfunction
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'alvan/vim-closetag'
+Plug 'bronson/vim-visual-star-search'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'ervandew/supertab'
+Plug 'itchyny/lightline.vim'
+Plug 'joshdick/onedark.vim'
+
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
+
+Plug 'justinmk/vim-sneak'
+Plug 'matze/vim-move'
 Plug 'mbbill/undotree'
 Plug 'mhartington/oceanic-next'
-Plug 'joshdick/onedark.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'junegunn/seoul256.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-fugitive'
 Plug 'nvie/vim-flake8'
-Plug 'vim-syntastic/syntastic'
-
-Plug 'itchyny/lightline.vim'
-
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'terryma/vim-smooth-scroll'
-Plug 'matze/vim-move'
-Plug 'tpope/vim-commentary'
+Plug 'sheerun/vim-polyglot'
 Plug 'sickill/vim-pasta'
-Plug 'justinmk/vim-sneak'
-Plug 'tpope/vim-vinegar'
-Plug 'ervandew/supertab'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-markdown'
+
 Plug 'sts10/vim-mustard'
-Plug 'junegunn/seoul256.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'bronson/vim-visual-star-search'
+Plug 'sts10/vim-zipper'
+
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/goyo.vim'
+Plug 'terryma/vim-smooth-scroll'
+
 Plug 'tmhedberg/matchit'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'alvan/vim-closetag'
+
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+
+Plug 'vim-ruby/vim-ruby'
+Plug 'vim-syntastic/syntastic'
+Plug 'wellle/targets.vim'
+
 Plug 'kana/vim-textobj-user'
 Plug 'lucapette/vim-textobj-underscore' | Plug 'kana/vim-textobj-user'
 Plug 'jceb/vim-textobj-uri'             | Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'          | Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'            | Plug 'kana/vim-textobj-user'
-Plug 'wellle/targets.vim'
-Plug 'sts10/vim-zipper'
 
 call plug#end()
 
@@ -1629,35 +1633,19 @@ set background=dark
 " Use deoplete.
 "let g:deoplete#enable_at_startup = 1
 
-"set encoding=utf-8
-"let g:airline_powerline_fonts = 1
-"let g:Powerline_symbols='unicode'
-
-" Status bar airline settings
-"let g:airline#extensions#tabline#enabled = 2
-"let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-"let g:airline#extensions#tabline#right_sep = ' '
-"let g:airline#extensions#tabline#right_alt_sep = '|'
-"let g:airline_left_sep = ' '
-"let g:airline_left_alt_sep = '|'
-"let g:airline_right_sep = ' '
-"let g:airline_right_alt_sep = '|'
-"let g:airline_theme= 'seoul256'
-"let g:airline_theme= 'solarized dark'
 let g:lightline = {
       \ 'colorscheme': 'seoul256',
       \ }
+
 "let g:lightline = {
-"      \ 'colorscheme': 'wombat',
+"      \ 'colorscheme': 'seoul256',
 "      \ 'component': {
 "      \   'readonly': '%{&readonly?"":""}',
 "      \ },
-"      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-"      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+"      \ 'separator': { 'left': "\u2b80", 'right': '⮂' },
+"      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
 "      \ }
-"
+
 "vim Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
