@@ -134,67 +134,67 @@ call plug#end()
 ""
 ""let g:ycm_disable_for_files_larger_than_kb = 2000
 "
-"if has("win64") || has("win32") || has("win16")
-"	let g:OS_name="windows"
-"
-"	let g:OS_dir_separator = '\'
-"	let g:OS_cat_command = 'type'
-"	let g:OS_mkdir_command = 'mkdir'
-"    "TODO: change to cygwin later
-"	let g:OS_ctags_command = 'c:\Apps\ctags57\ctags.exe'
-"	let g:OS_system_includes_dir = 'c:\Apps\Dev-Cpp\include'
-"
-"    let g:OS_vimrc = "_vimrc"
-"
-"	"windows vista uses $HOME\.vim path, xp uses $HOME\vimfiles path
-"	"so in xp we change it to $HOME\.vim and $HOME\.vim\after
-"	"but only the first and last component
-"	let &runtimepath=substitute(&runtimepath, '\(^[^,]*\)vimfiles', '\1.vim', '') "replace first occurrence
-"	let &runtimepath=substitute(&runtimepath, '\(,[^,]*\)vimfiles\([^,]*\)$', '\1.vim\2', '') "replace last occurrence
-"	
-"	"behave mswin
-"	"source $VIMRUNTIME/mswin.vim
-"
-"	"let $VIMRUNTIME=fnamemodify($_, ":p")
-"	language mes en
-"else
-"	"if SHELL env variable is set incorrectly and VIM cannot start shell, then
-"	"  uncomment following line, that overrides SHELL env variable
-"	"set shell=/bin/sh
-"
-"	let g:OS_name=system('uname -s')
-"	
-"	let g:OS_dir_separator = '/'
-"	let g:OS_cat_command = 'cat'
-"	let g:OS_mkdir_command = 'mkdir -p'
-"	"let g:OS_ctags_command = '/opt/exp/bin/ctags'
-"	"if filereadable(g:OS_ctags_command) == 0
-"		let g:OS_ctags_command = 'ctags'
-"	"endif
-"	let g:OS_system_includes_dir = '/usr/include'
-"
-"    let g:OS_vimrc = ".vimrc"
-"
-"	"
-"	" What was the name that we were called as?
-"	"
-"	let vinvoke=fnamemodify($_, ":p")
-"	let fullp=substitute(vinvoke, '^\(.*[/]\).*$', '\1', "")
-"	"
-"	" It's possible that $VIMRUNTIME does not exist.
-"	" Let's see if there is a directory vimshare below where we were started
-"	"
-"	if isdirectory($VIMRUNTIME) == 0
-"		let vimshare=fullp . "vimshare"
-"		if isdirectory(vimshare) == 1
-"			let $VIMRUNTIME=vimshare . "/vim" . substitute(v:version, "50", "5", "")
-"			let &helpfile=vimshare . "/vim" . substitute(v:version, "50", "5", "") . "/doc/help.txt"
-"		endif
-"	endif
-"endif
-"
-"let s:home_base_path=$HOME
-"
+if has("win64") || has("win32") || has("win16")
+	let g:OS_name="windows"
+
+	let g:OS_dir_separator = '\'
+	let g:OS_cat_command = 'type'
+	let g:OS_mkdir_command = 'mkdir'
+    "TODO: change to cygwin later
+	let g:OS_ctags_command = 'c:\Apps\ctags57\ctags.exe'
+	let g:OS_system_includes_dir = 'c:\Apps\Dev-Cpp\include'
+
+    let g:OS_vimrc = "_vimrc"
+
+	"windows vista uses $HOME\.vim path, xp uses $HOME\vimfiles path
+	"so in xp we change it to $HOME\.vim and $HOME\.vim\after
+	"but only the first and last component
+	let &runtimepath=substitute(&runtimepath, '\(^[^,]*\)vimfiles', '\1.vim', '') "replace first occurrence
+	let &runtimepath=substitute(&runtimepath, '\(,[^,]*\)vimfiles\([^,]*\)$', '\1.vim\2', '') "replace last occurrence
+	
+	"behave mswin
+	"source $VIMRUNTIME/mswin.vim
+
+	"let $VIMRUNTIME=fnamemodify($_, ":p")
+	language mes en
+else
+	"if SHELL env variable is set incorrectly and VIM cannot start shell, then
+	"  uncomment following line, that overrides SHELL env variable
+	"set shell=/bin/sh
+
+	let g:OS_name=system('uname -s')
+	
+	let g:OS_dir_separator = '/'
+	let g:OS_cat_command = 'cat'
+	let g:OS_mkdir_command = 'mkdir -p'
+	"let g:OS_ctags_command = '/opt/exp/bin/ctags'
+	"if filereadable(g:OS_ctags_command) == 0
+		let g:OS_ctags_command = 'ctags'
+	"endif
+	let g:OS_system_includes_dir = '/usr/include'
+
+    let g:OS_vimrc = ".vimrc"
+
+	"
+	" What was the name that we were called as?
+	"
+	let vinvoke=fnamemodify($_, ":p")
+	let fullp=substitute(vinvoke, '^\(.*[/]\).*$', '\1', "")
+	"
+	" It's possible that $VIMRUNTIME does not exist.
+	" Let's see if there is a directory vimshare below where we were started
+	"
+	if isdirectory($VIMRUNTIME) == 0
+		let vimshare=fullp . "vimshare"
+		if isdirectory(vimshare) == 1
+			let $VIMRUNTIME=vimshare . "/vim" . substitute(v:version, "50", "5", "")
+			let &helpfile=vimshare . "/vim" . substitute(v:version, "50", "5", "") . "/doc/help.txt"
+		endif
+	endif
+endif
+
+let s:home_base_path=$HOME
+
 "" ============================
 "" =           Paths          =
 "" ============================
@@ -211,24 +211,27 @@ let g:VCS_name="git"
 "" =         Sessions         =
 "" ============================
 "" remove possible trailing slash before creating directory $HOME/.vim/sessions
-"let g:user_sessions_home = substitute($HOME, '[\/]$', '', '') . g:OS_dir_separator . '.vim' . g:OS_dir_separator . 'sessions'
-"let g:user_session_filename = 'session.vim'
-"silent! execute '!' . g:OS_mkdir_command . ' ' . g:user_sessions_home
+let g:user_sessions_home = substitute($HOME, '[\/]$', '', '') . g:OS_dir_separator . '.vim' . g:OS_dir_separator . 'sessions'
+let g:user_session_filename = 'session.vim'
+silent! execute '!' . g:OS_mkdir_command . ' ' . g:user_sessions_home
+
 ""autocmd VimEnter * call LoadSession()
 ""autocmd VimLeave * call SaveSession()
-"function! SaveSession()
-"	execute 'mksession! ' . g:user_sessions_home . g:OS_dir_separator . g:user_session_filename
-"endfunction
-"function! LoadSession()
-"	"if argc() == 0
-"		if v:version > 700
-"			tabfirst
-"			tabonly
-"		endif
-"		execute 'source ' . g:user_sessions_home . g:OS_dir_separator . g:user_session_filename
-"	"endif
-"endfunction
-"
+
+function! SaveSession()
+	execute 'mksession! ' . g:user_sessions_home . g:OS_dir_separator . g:user_session_filename
+endfunction
+
+function! LoadSession()
+	"if argc() == 0
+		if v:version > 700
+			tabfirst
+			tabonly
+		endif
+		execute 'source ' . g:user_sessions_home . g:OS_dir_separator . g:user_session_filename
+	"endif
+endfunction
+
 "" open files with the cursor at the last remembered position
 "autocmd! BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 "
@@ -692,6 +695,15 @@ endfunction
 "	"nmap <S-F7> :exe ":sign unplace 123 file=" . expand("%:p")<CR>
 "endif
 
+function! GitdiffToggle()
+    if &diff
+        diffoff!
+        q
+    else
+        Gvdiff
+    endif
+:endfunction
+
 set pastetoggle=<F7>
 
 nmap <F8> :TagbarToggle<Enter>
@@ -731,9 +743,13 @@ if g:VCS_name == "git"
     " imap <F5> <C-o>:Gdiff<Enter>
     " vmap <F5> <Esc>:Gdiff<Enter>gv
 
-    nmap <F6> :Gviff BRANCH<Enter>
-    imap <F6> <C-o>:Gvdiff BRANCH<Enter>
-    vmap <F6> <Esc>:Gvdiff BRANCH<Enter>gv
+    nmap <F6> :call GitdiffToggle()<Enter>
+    imap <F6> <C-o>:call GitdiffToggle()<Enter>
+    vmap <F6> <Esc>:call GitdiffToggle()<Enter>gv
+
+    " nmap <F6> :Gviff BRANCH<Enter>
+    " imap <F6> <C-o>:Gvdiff BRANCH<Enter>
+    " vmap <F6> <Esc>:Gvdiff BRANCH<Enter>gv
 
     nmap <F9> :Gblame<Enter>
     imap <F9> <C-o>:Gblame<Enter>
