@@ -38,7 +38,8 @@ Plug 'mbbill/undotree'
 Plug 'mhartington/oceanic-next'
 Plug 'nvie/vim-flake8'
 Plug 'sheerun/vim-polyglot'
-Plug 'sickill/vim-pasta'
+"Plug 'sickill/vim-pasta'
+Plug 'klen/python-mode'
 
 Plug 'sts10/vim-mustard'
 Plug 'sts10/vim-zipper'
@@ -796,13 +797,13 @@ endif
 "vmap <S-F12> <Esc>:lnext<Enter>v
 "
 "" common leader mappings
-"let mapleader = ','
-"map <Leader>l :set invlist!<CR>
-"map <Leader>n :set nu!<CR>
-"map <Leader>N :set rnu!<CR>
-"map <Leader>I :set diffopt-=iwhite<CR>
-"map <Leader>i :set diffopt+=iwhite<CR>
-"
+let mapleader = ','
+map <Leader>l :set invlist!<CR>
+map <Leader>n :set nu!<CR>
+map <Leader>N :set rnu!<CR>
+map <Leader>I :set diffopt-=iwhite<CR>
+map <Leader>i :set diffopt+=iwhite<CR>
+
 "function! LetDiffOptionsForTab(options)
 "	let t:diffoptions=a:options
 "	diffupdate
