@@ -23,11 +23,13 @@ Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'alvan/vim-closetag'
 Plug 'bronson/vim-visual-star-search'
+Plug 'brookhong/cscope.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'tell-k/vim-autopep8'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
@@ -38,8 +40,8 @@ Plug 'mbbill/undotree'
 Plug 'mhartington/oceanic-next'
 Plug 'nvie/vim-flake8'
 Plug 'sheerun/vim-polyglot'
-"Plug 'sickill/vim-pasta'
-Plug 'klen/python-mode'
+Plug 'scrooloose/nerdcommenter'
+Plug 'sickill/vim-pasta'
 
 Plug 'sts10/vim-mustard'
 Plug 'sts10/vim-zipper'
@@ -59,6 +61,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 
 Plug 'vim-ruby/vim-ruby'
+Plug 'python-mode/python-mode'
 Plug 'vim-syntastic/syntastic'
 Plug 'wellle/targets.vim'
 
@@ -526,11 +529,7 @@ vmap <C-Down> <C-S-Down>
 "			endtry
 "		endtry
 "endfunction
-"
-"nmap <C-]> :call SophTag("")<Enter>
-"imap <C-]> <C-o>:call SophTag("")<Enter>
-"vmap <C-]> y<Esc>:call SophTag("<C-r>0")<Enter>gv
-"
+
 "" F1 to display help
 "if g:PROJECT_name == "SR"
 "	nmap <F1> :execute "!sr_cscope.sh update"<CR> :cs reset<CR> :<CR>
@@ -740,6 +739,9 @@ vmap <S-F10> <Esc>:qa<Enter>gv
 "TODO show SCCS + show featured
 
 if g:VCS_name == "git"
+    nmap <F2> :Pyclewn<CR>
+    imap <F2> <Esc>:Pyclewn<CR>
+
     nmap <F5> :call DiffOrig()<Enter>
     imap <F5> <C-o>:call DiffOrig()<Enter>
     vmap <F5> <Esc>:call DiffOrig()<Enter>gv
@@ -795,14 +797,15 @@ endif
 "nmap <S-F12> :lnext<Enter>
 "imap <S-F12> <C-o>:lnext<Enter>
 "vmap <S-F12> <Esc>:lnext<Enter>v
-"
-"" common leader mappings
+
+" common leader mappings
 let mapleader = ','
 map <Leader>l :set invlist!<CR>
 map <Leader>n :set nu!<CR>
 map <Leader>N :set rnu!<CR>
 map <Leader>I :set diffopt-=iwhite<CR>
 map <Leader>i :set diffopt+=iwhite<CR>
+map <Leader>a :Autopep8<CR>
 
 "function! LetDiffOptionsForTab(options)
 "	let t:diffoptions=a:options
@@ -888,7 +891,7 @@ map <Leader>i :set diffopt+=iwhite<CR>
 "
 "map <Leader>f :call ToggleFeatureInfoWindow("")<CR>
 "
-"map <Leader>p :set paste!<CR>
+map <Leader>p :set paste!<CR>
 "map <Leader>m :call SwitchMouse()<CR>
 "
 "" path leader mappings
@@ -1551,6 +1554,35 @@ vnoremap <Leader>y "*y
 vnoremap <Leader>c "*c
 vnoremap <Leader>d "*d
 
+"CSCOPE mappings
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+
+" s: Find this C symbol
+nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
+" g: Find this definition
+nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
+" d: Find functions called by this function
+nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
+" c: Find functions calling this function
+nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
+" t: Find this text string
+nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
+" e: Find this egrep pattern
+nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
+" f: Find this file
+nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
+" i: Find files #including this file
+nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
+
+nnoremap <C-\> :call CscopeFind('g', expand('<cword>'))<Enter>
+
+nmap <C-]> :call CscopeFind('g', expand('<cword>'))<Enter>
+imap <C-]> <C-o> :call CscopeFind('g', expand('<cword>'))<Enter>
+vmap <C-]> y<Esc> :call  CscopeFind('g', expand('<cword>'))<Enter>
+
+nmap <C-b> :buffer 1<Enter>
+
 "set clipboard+=unnamed
 "if has('clipboard')
 "    if has('unnamedplus')
@@ -1607,28 +1639,23 @@ vnoremap <Leader>d "*d
 ":cabbrev px Px
 ":cabbrev pv Pv
 
+""comments
+"vnoremap <silent> # :s/^/#/<cr>:noh<cr>
+"vnoremap <silent> -# :s/^#//<cr>:noh<cr>
+
 "filetype plugin indent on
 inoremap {<CR> {<CR>}<C-o>O
 
 "map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 "runtime bundle/vim-pathogen/autoload/pathogen.vim
 
-let g:python_host_prog = '/usr/bin/python3'
-
+let g:python_host_prog = '/usr/bin/python2'
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"set background=dark "light or dark
-"colorscheme solarized
-
-"if (has("termguicolors"))
-"  set termguicolors
-"endif
 
 " Theme
 syntax enable
 colorscheme seoul256
-"colorscheme OceanicNext
-"colorscheme onedark
 set background=dark
 
 " Use deoplete.
@@ -1657,3 +1684,10 @@ let g:syntastic_loc_list_height=2
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+
+let g:pymode_options_max_line_length=120
+
+let g:vdebug_options = {}
+let g:vdebug_options["port"] = 9000
+let g:vdebug_options["break_on_open"] = 0
