@@ -29,12 +29,30 @@ with pkgs.lib;
     # '';
   };
 
-  nix = {
+  #nix = {
     #package = pkgs.nixUnstable;
-    nixPath = [ "nixpkgs=/home/shlomo/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" ];
-    daemonNiceLevel = 10;
-    daemonIONiceLevel = 4;
-    binaryCaches = [ "http://cache.nixos.org" ];
+  #  nixPath = [ "nixpkgs=/home/shlomo/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" ];
+  #  daemonNiceLevel = 10;
+  #  daemonIONiceLevel = 4;
+  #  binaryCaches = [ "http://cache.nixos.org" ];
+  #};
+  
+  nixpkgs.config = {
+    allowUnfree = true;
+
+    chromium = {
+      enablePepperFlash = true;
+    };
+
+    packageOverrides = pkgs: {
+      neovim = pkgs.neovim.override {
+        vimAlias = true;
+      };
+
+      weechat = pkgs.weechat.override {
+        extraBuildInputs = [ pkgs.python27Packages.websocket_client ];
+      };
+    };
   };
 
   fonts = {
@@ -97,8 +115,8 @@ with pkgs.lib;
 
         # Big suites
         chromium
-        #firefox
-        libreoffice
+        firefox
+        # libreoffice
         tdesktop
         gimp
         inkscape
@@ -127,26 +145,6 @@ with pkgs.lib;
             collection-science
             collection-xetex;
         })
-
-        # Games
-        (steam.override {
-          withPrimus = true;
-        })
-        (steam.override {
-          withPrimus = true;
-          nativeOnly = true;
-          newStdcpp = true;
-        }).run
-        (dwarf-fortress.override {
-          # enableDFHack = true;
-          theme = dwarf-fortress-packages.cla-theme;
-        })
-        #dwarf-therapist
-        wesnoth
-        zeroad
-        zsnes
-        lgogdownloader
-        dosbox
 
         # 3D printing
         cura
@@ -234,6 +232,7 @@ with pkgs.lib;
         nixopsUnstable
         nox
         #julia
+		neovim
         (emacsWithPackages (with emacsPackagesNg; [
           evil undo-tree powerline-evil key-chord linum-relative ace-jump-mode
           use-package projectile magit
@@ -249,11 +248,11 @@ with pkgs.lib;
           rust-mode
           python-mode cython-mode
         ]))
-
-        # Qt development
-        qtcreator
-        (qt5.env "qt-${qt5.qtbase.version}" (with qt5; [ qtdeclarative ]))
+		
+		# dev
         gnumake
+		elixir
+		go
 
         # Networking
         networkmanagerapplet
@@ -432,19 +431,11 @@ with pkgs.lib;
       extraUsers = {
         root.passwordFile = "/root/.passwd";
 
-        shlomo = rec {
+        martin = rec {
           extraGroups = [ "wheel" "networkmanager" "adbusers" "cdrom" "vboxusers" "docker" ];
           uid = 1000;
           isNormalUser = true;
-          passwordFile = "/root/.shlomo.passwd";
-        };
-
-        guest = rec {
-          group = "users";
-          uid = 2000;
-          home = "/run/user/${toString uid}";
-          isNormalUser = true;
-          password = "123";
+          passwordFile = "/root/.martin.passwd";
         };
       };
     };
