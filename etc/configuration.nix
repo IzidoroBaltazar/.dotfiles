@@ -160,7 +160,7 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment = {
-    systemPackages = (with pkgs; [
+    systemPackages = with pkgs; [
         # Runtimes
         samba # needed for wine
         mono
@@ -201,12 +201,12 @@
             collection-xetex;
         })
 
+        (pkgs.haskellPackages (self : [
+            self.Agda
+            #idris
+        ]))
         # 3D printing
         cura
-      ]) ++ (with pkgs.haskellPackages; [
-          Agda
-          #idris
-      ]) ++ (with pkgs; [
         # Style
         terminus_font
 
@@ -286,7 +286,7 @@
         nixopsUnstable
         nox
         #julia
-		neovim
+        neovim
         (emacsWithPackages (with emacsPackagesNg; [
           evil undo-tree powerline-evil key-chord linum-relative ace-jump-mode
           use-package projectile magit
@@ -303,10 +303,10 @@
           python-mode cython-mode
         ]))
 		
-		# dev
+        # dev
         gnumake
-		elixir
-		go
+        elixir
+        go
 
         # Networking
         networkmanagerapplet
