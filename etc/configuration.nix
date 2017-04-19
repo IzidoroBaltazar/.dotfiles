@@ -201,14 +201,14 @@
             collection-xetex;
         })
 
-        (pkgs.haskellPackages (self : [
-            self.Agda
+        # (pkgs.haskellPackages (self : [
+        #    self.Agda
             #idris
-        ]))
+        # ]))
         # 3D printing
-        cura
+        # cura
         # Style
-        terminus_font
+        # terminus_font
 
         # Files
         btrfs-progs
