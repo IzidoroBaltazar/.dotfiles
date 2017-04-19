@@ -10,7 +10,7 @@
     loader = {
       grub.enable = true;
       grub.version = 2;
-      grub.device = "/dev/sda";
+      grub.device = "/dev/sda1";
     };
     kernelPackages = pkgs.linuxPackages_4_10;
   };
@@ -56,7 +56,7 @@
     ];
     variables = {
       BROWSER = pkgs.lib.mkOverride 0 "chromium";
-      EDITOR = pkgs.lib.mkOverride 0 "vim";
+      EDITOR = pkgs.lib.mkOverride 0 "nvim";
     };
     systemPackages = with pkgs; [
       # $ nix-env -qaP | grep wget to find packages
