@@ -119,7 +119,6 @@
     xorg.xkill
     xorg.xdpyinfo
 
-    arc-gtk-theme
     elementary-icon-theme
 
     boot
