@@ -118,26 +118,26 @@
         python-mode cython-mode
       ]))
 
-      (with pkgs.haskellPackages; [
-        ((ghcWithPackages (self: with self; [ transformers
-                                              mtl
-                                              lens
-                                            ]
-                          )).override {
-          withLLVM = true;
-        })
-        cabal-install
-        stack
-
-        cabal2nix
-        ghc-core
-        stylish-haskell
-        hlint
-        threadscope
-        pointfree
-        yesod-bin
-        stylish-haskell
-      ])
+#      (with pkgs.haskellPackages; [
+#        ((ghcWithPackages (self: with self; [ transformers
+#                                              mtl
+#                                              lens
+#                                            ]
+#                          )).override {
+#          withLLVM = true;
+#        })
+#        cabal-install
+#        stack
+#
+#        cabal2nix
+#        ghc-core
+#        stylish-haskell
+#        hlint
+#        threadscope
+#        pointfree
+#        yesod-bin
+#        stylish-haskell
+#      ])
       #(texLiveAggregationFun { paths = [ texLive texLiveExtra texLiveBeamer lmodern ]; })
     ];
   };
