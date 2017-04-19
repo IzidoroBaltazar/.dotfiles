@@ -349,7 +349,6 @@
         # Doom
         zandronum-bin
         doomseeker
-      ])
       (with pkgs.xfce; [
         xfce4_xkb_plugin
         xfce4_systemload_plugin
@@ -373,7 +372,8 @@
         pointfree
         yesod-bin
         stylish-haskell
-      ]);
+      ])
+      ];
 
       pathsToLink = [ "/share/soundfonts" ];
     };
