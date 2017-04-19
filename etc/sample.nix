@@ -25,11 +25,19 @@
     };
   };
 
-  boot.kernelParams = [ "intel_pstate=no_hwp" ];
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
+	boot = {
+		loader = {
+			grub.enable = true;
+			grub.version = 2;
+			grub.device = "/dev/sda1";
+		};
+		kernelPackages = pkgs.linuxPackages_4_10;
+	};
+#  boot.kernelParams = [ "intel_pstate=no_hwp" ];
+#  boot.loader = {
+#    systemd-boot.enable = true;
+#    efi.canTouchEfiVariables = true;
+#  };
 
   fileSystems."/".device = pkgs.lib.mkForce "/dev/mapper/root";
 
