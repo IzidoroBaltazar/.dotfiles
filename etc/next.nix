@@ -140,7 +140,7 @@
         pointfree
         yesod-bin
         stylish-haskell
-      ]);
+      ])
       #(texLiveAggregationFun { paths = [ texLive texLiveExtra texLiveBeamer lmodern ]; })
     ];
   };
