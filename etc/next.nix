@@ -43,9 +43,6 @@
       neovim = pkgs.neovim.override {
         vimAlias = true;
       };
-
-    weechat = pkgs.weechat.override {
-      extraBuildInputs = [ pkgs.python27Packages.websocket_client ];
     };
   };
 
@@ -168,7 +165,7 @@
   virtualisation = {
     libvirtd.enable = false;
     docker.enable = true;
-    virtualbox.host.enable = true;
+    # virtualbox.host.enable = true;
   };
 
   services = {
