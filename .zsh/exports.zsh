@@ -9,9 +9,11 @@ export GREP_OPTIONS='--color=auto'
 
 # Redefining PATH
 #PATH=$GOPATH/bin:$PATH
-
+if [[ ! -d ~/virtualenvs ]]; then
+    mkdir ~/virtualenvs
+fi
 export WORKON_HOME=~/virtualenvs
-source ~/.local/bin/virtualenvwrapper.sh
+source virtualenvwrapper.sh
 export PIP_VIRTUALENV_BASE=~/virtualenvs
 
 export EDITOR=nvim

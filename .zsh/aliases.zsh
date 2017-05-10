@@ -25,4 +25,4 @@ alias cpwd='openssl rand -base64'
 alias ctrlc='xclip -selection c'
 alias ctrlv='xclip -selection c -o'
 
-alias venv3='mkvirtualenv -p python3'
+alias venv3='mkvirtualenv -p `which python3`'
