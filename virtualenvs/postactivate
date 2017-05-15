@@ -4,7 +4,3 @@
 PS1="$_OLD_VIRTUAL_PS1"
 _OLD_RPROMPT="$RPROMPT"
 RPROMPT="%{%F{1}%}%F{130}(env: %F{6}`basename \"$VIRTUAL_ENV\"`%F{130})%f $RPROMPT"
-
-#PS1="$_OLD_VIRTUAL_PS1"
-#_OLD_RPROMPT="$RPROMPT"
-#RPROMPT="%{${fg_bold[white]}%}(env: %{${fg[green]}%}`basename \"$VIRTUAL_ENV\"`%{${fg_bold[white]}%})%{${reset_color}%} $RPROMPT"

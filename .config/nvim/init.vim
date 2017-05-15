@@ -31,6 +31,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'tell-k/vim-autopep8'
 
+Plug 'fidian/hexmode'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 
