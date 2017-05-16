@@ -387,6 +387,21 @@ set foldlevelstart=20
 " ============================
 " =Working with multiple tabs=
 " ============================
+" Tab navigation like Firefox.
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>" Tab navigation like Firefox.
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
 " navigating multiple tabs - works only in graphical modes (gVim)
 nmap <C-Tab> :tabnext<Enter>
 nmap <C-S-Tab> :tabprev<Enter>
@@ -410,7 +425,23 @@ imap <C-Up> <C-S-Up>
 imap <C-Down> <C-S-Down>
 vmap <C-Up> <C-S-Up>
 vmap <C-Down> <C-S-Down>
-	
+
+" If the current buffer has never been saved, it will have no name,
+" call the file browser to save it, otherwise just save it.
+command -nargs=0 -bar Update if &modified 
+                           \|    if empty(bufname('%'))
+                           \|        browse confirm write
+                           \|    else
+                           \|        confirm write
+                           \|    endif
+                           \|endif
+nnoremap <silent> <C-S> :<C-u>Update<CR>
+
+" Use CTRL-S for saving, also in Insert mode
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
+  
 "" =====================================
 "" =Movement with CTRL,SHIFT and ARROWS=
 "" =====================================
@@ -1688,6 +1719,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 let g:pymode_options_max_line_length=120
+let g:pymode_python = 'python3'
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope = 0
 
 let g:vdebug_options = {}
 let g:vdebug_options["port"] = 9000
