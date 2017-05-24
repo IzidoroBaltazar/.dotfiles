@@ -13,6 +13,9 @@
   # virtualbox modifications
   virtualisation.virtualbox.guest.enable = true;
   boot.initrd.checkJournalingFS = false;
+  # docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.storageDriver = "devicemapper";
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -47,6 +50,7 @@
     git
     neovim
     python27Full
+    python2Packages.docker_compose
     python27Packages.pip
     python27Packages.virtualenv
     python27Packages.virtualenvwrapper
@@ -96,10 +100,27 @@
   # services.xserver.desktopManager.plasma5.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.extraUsers.martin = {
-    isNormalUser = true;
-    uid = 1000;
-    shell = "/run/current-system/sw/bin/zsh";
+  # users.extraUsers.martin = {
+  #    isNormalUser = true;
+  #    uid = 1000;
+  #    shell = "/run/current-system/sw/bin/zsh";
+  #  };
+
+  users = {
+    mutableUsers = false;
+    extraGroups.docker.gid = lib.mkForce config.ids.gids.docker;
+    extraUsers = [
+      {
+        uid             = 1000;
+        name            = "martin";
+        # group           = "users";
+        extraGroups     = [ "wheel" "networkmanager" "docker" "fuse" "sudo" ];
+        isNormalUser    = true;
+        # passwordFile    = "/etc/nixos/passwords/martin";
+        useDefaultShell = false;
+        shell           = "/run/current-system/sw/bin/zsh";
+      }
+    ];
   };
 
   # The NixOS release to be compatible with for stateful data such as databases.
