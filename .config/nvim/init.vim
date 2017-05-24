@@ -311,8 +311,8 @@ endif
 "imap <A-Down> <C-o>gj
 "
 ""reselect visual selection after <,> movements
-"vnoremap < <gv
-"vnoremap > >gv
+vnoremap < <gv
+vnoremap > >gv
 "" make Y behave like other capitals 
 "map Y y$
 "" force saving files that require root permission 
