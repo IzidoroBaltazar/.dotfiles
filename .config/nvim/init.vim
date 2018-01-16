@@ -1574,7 +1574,7 @@ map <Leader>p :set paste!<CR>
 "endif
 "
 " use leader to interact with the system clipboard
-set clipboard+=unnamedplus
+set clipboard=unnamed
 nnoremap <Leader>p "*]p
 nnoremap <Leader>P "*]P
 
