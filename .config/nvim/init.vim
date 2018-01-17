@@ -259,7 +259,8 @@ set history=400		" keep 400 lines of command line history
 set ruler			" show the cursor position all the time
 set showcmd			" display incomplete commands
 set incsearch		" do incremental searching
-set tabstop=2
+set tabstop=4
+set shiftwidth=4
 set number				" line numbers
 set expandtab
 
@@ -589,10 +590,10 @@ inoremap <C-S> <C-O>:update<CR>
 "endif
 "
 "" F2 to save
-"nmap <F2> :w<Enter>
-"imap <F2> <C-o>:w<Enter>
-"vmap <F2> <Esc>:w<Enter>gv
-"
+nmap <F2> :w<Enter>
+imap <F2> <C-o>:w<Enter>
+vmap <F2> <Esc>:w<Enter>gv
+
 "" F3 to toggle source/header
 "" switch editing between .c* and .h* files
 "function! Mosh_Flip_Ext()
@@ -771,8 +772,8 @@ vmap <S-F10> <Esc>:qa<Enter>gv
 "TODO show SCCS + show featured
 
 if g:VCS_name == "git"
-    nmap <F2> :Pyclewn<CR>
-    imap <F2> <Esc>:Pyclewn<CR>
+    " nmap <F2> :Pyclewn<CR>
+    " imap <F2> <Esc>:Pyclewn<CR>
 
     nmap <F5> :call DiffOrig()<Enter>
     imap <F5> <C-o>:call DiffOrig()<Enter>
@@ -1719,9 +1720,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 let g:pymode_options_max_line_length=120
-let g:pymode_python = 'python3'
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope = 0
 
 let g:vdebug_options = {}
 let g:vdebug_options["port"] = 9000
