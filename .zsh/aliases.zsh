@@ -4,7 +4,6 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 alias emx='emacs -nw'
 
-#alias tmux="TERM=screen-256color-bce tmux"
 alias tmux="TERM=screen-256color tmux"
 alias tmx='tmux attach || tmux new'
 alias ls='ls --color=auto'
