@@ -6,6 +6,9 @@ scriptencoding utf-8
 "This parameter might be necessary behind Proxy
 let $GIT_SSL_NO_VERIFY = 'true'
 
+"autocmd FileType javascript set formatprg=prettier\ --stdin
+"autocmd BufWritePre *.js :normal gggqG
+
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
     "if behind proxy use --insecure switch
   silent !curl --insecure -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -62,6 +65,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 
 Plug 'vim-ruby/vim-ruby'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'w0rp/ale'
 Plug 'python-mode/python-mode'
 Plug 'vim-syntastic/syntastic'
 Plug 'wellle/targets.vim'
@@ -1575,7 +1580,8 @@ map <Leader>p :set paste!<CR>
 "endif
 "
 " use leader to interact with the system clipboard
-set clipboard=unnamed
+set clipboard+=unnamed
+set clipboard+=unnamedplus
 nnoremap <Leader>p "*]p
 nnoremap <Leader>P "*]P
 
@@ -1682,7 +1688,8 @@ inoremap {<CR> {<CR>}<C-o>O
 "map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 "runtime bundle/vim-pathogen/autoload/pathogen.vim
 
-let g:python_host_prog = '/usr/bin/python2'
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -1720,7 +1727,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 let g:pymode_options_max_line_length=120
+let g:pymode_rope = 0
 
 let g:vdebug_options = {}
 let g:vdebug_options["port"] = 9000
 let g:vdebug_options["break_on_open"] = 0
+let g:editorconfig_Beautifier = '~/.config/nvim/.editorconfig'
