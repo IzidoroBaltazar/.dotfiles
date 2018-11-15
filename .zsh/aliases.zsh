@@ -32,7 +32,10 @@ pip-up() {
 
 alias gpull='git pull && git submodule update --recursive --remote'
 alias gpulli='git pull && git submodule update --init --recursive --remote'
-alias gdelbranch='f() { git branch -D $1 && git push origin --delete $1 }; f'
+
+gdelbranch() {
+    git branch -D $1 && git push origin --delete $1
+}
 
 alias es='sudo sysctl -w vm.max_map_count=262144'
 alias tunnel_amazon='ssh -X -i ~/stuff/ssh/ml-key.pem ubuntu@ec2-35-158-142-68.eu-central-1.compute.amazonaws.com -L 0.0.0.0:8888:localhost:8888'
