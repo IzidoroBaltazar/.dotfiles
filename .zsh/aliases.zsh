@@ -19,8 +19,6 @@ alias docker-rm="docker ps -a | awk '{print \$1}' | xargs docker rm"
 
 alias cpwd='openssl rand -base64'
 
-alias gdelbranch='f() { git branch -D $1 && git push origin --delete $1 }; f'
-
 alias ctrlc='xclip -selection c'
 alias ctrlv='xclip -selection c -o'
 
