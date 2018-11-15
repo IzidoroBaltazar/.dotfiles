@@ -21,6 +21,8 @@ alias goDe='ssh -X mp5516@135.76.168.170'
 alias dockerbuild='docker build --build-arg http_proxy="http://135.28.13.11:8888" --build-arg https_proxy="http://135.28.13.11:8888"'
 alias cpwd='openssl rand -base64'
 
+alias gdelbranch='f() { git branch -D $1 && git push origin --delete $1 }; f'
+
 alias ctrlc='xclip -selection c'
 alias ctrlv='xclip -selection c -o'
 
