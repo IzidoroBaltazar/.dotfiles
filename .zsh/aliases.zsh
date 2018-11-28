@@ -34,3 +34,16 @@ alias gdelbranch='f() { git branch -D $1 && git push origin --delete $1 }; f'
 
 alias es='sudo sysctl -w vm.max_map_count=262144'
 alias tunnel_amazon='ssh -X -i ~/stuff/ssh/ml-key.pem ubuntu@ec2-35-158-142-68.eu-central-1.compute.amazonaws.com -L 0.0.0.0:8888:localhost:8888'
+
+alias juno='jupyter notebook'
+
+timestamp2date() {
+    echo -n $@
+    echo -n " "
+    date -d @$@
+}
+
+date2timestamp() {
+    echo -n "$* "
+    date --date="$*" +"%s"
+}
