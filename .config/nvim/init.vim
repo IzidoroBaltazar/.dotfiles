@@ -65,7 +65,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 
 Plug 'vim-ruby/vim-ruby'
-Plug 'maksimr/vim-jsbeautify'
+"Plug 'maksimr/vim-jsbeautify'
 Plug 'w0rp/ale'
 Plug 'python-mode/python-mode'
 Plug 'vim-syntastic/syntastic'
@@ -339,6 +339,9 @@ vnoremap > >gv
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
 set showmode " Show current mode.
+
+set spelllang=en
+set spellsuggest=5
 
 "if v:version >= 700
 "	" set completion options
@@ -844,6 +847,7 @@ map <Leader>N :set rnu!<CR>
 map <Leader>I :set diffopt-=iwhite<CR>
 map <Leader>i :set diffopt+=iwhite<CR>
 map <Leader>a :Autopep8<CR>
+map <Leader>s :set spell!<CR>
 
 "function! LetDiffOptionsForTab(options)
 "	let t:diffoptions=a:options
@@ -852,7 +856,6 @@ map <Leader>a :Autopep8<CR>
 "map <Leader>D :call LetDiffOptionsForTab("")<CR>
 "map <Leader>d :call LetDiffOptionsForTab("-d")<CR>
 "
-"map <Leader>s :set spell!<CR>
 "map <Leader>h :set hls!<CR>
 "map <Leader>H :nohlsearch<CR>
 "map <Leader>f :set foldenable!<CR>
