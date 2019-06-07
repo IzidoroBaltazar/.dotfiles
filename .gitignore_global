@@ -1,1 +1,4 @@
 .ropeproject/
+tags
+cscope/
+cscope.out
