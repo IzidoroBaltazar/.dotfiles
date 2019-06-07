@@ -32,6 +32,8 @@ pip-up() {
     pip freeze | awk '{printf "puts [string range %s 0 [expr [string first = %s]-1]]\n", $1, $1}' | tclsh | xargs pip install --upgrade
 }
 
+# GIT aliases
+alias gexcludeglobal='git config --global core.excludesfile ~/.gitignore_global'
 alias gpull='git pull && git submodule update --recursive --remote'
 alias gpulli='git pull && git submodule update --init --recursive --remote'
 
