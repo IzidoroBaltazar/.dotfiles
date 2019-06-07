@@ -4,6 +4,9 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 alias emx='emacs -nw'
 
+# Management of .dotfiles
+alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
+
 alias tmux="TERM=screen-256color tmux"
 alias tmx='tmux attach || tmux new'
 alias ls='ls --color=auto'
