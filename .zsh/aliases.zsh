@@ -6,6 +6,7 @@ alias emx='emacs -nw'
 
 # Management of .dotfiles
 alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
+alias updateDotfiles='dgit reset --hard'
 
 alias tmux="TERM=screen-256color tmux"
 alias tmx='tmux attach || tmux new'
