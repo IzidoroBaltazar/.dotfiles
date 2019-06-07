@@ -71,6 +71,8 @@ Plug 'python-mode/python-mode'
 Plug 'vim-syntastic/syntastic'
 Plug 'wellle/targets.vim'
 
+Plug 'davidhalter/jedi-vim'
+
 Plug 'kana/vim-textobj-user'
 Plug 'lucapette/vim-textobj-underscore' | Plug 'kana/vim-textobj-user'
 Plug 'jceb/vim-textobj-uri'             | Plug 'kana/vim-textobj-user'
