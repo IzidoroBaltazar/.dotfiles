@@ -33,7 +33,6 @@ pip-up() {
 }
 
 # GIT aliases
-alias gexcludeglobal='git config --global core.excludesfile ~/.gitignore_global'
 alias gpull='git pull && git submodule update --recursive --remote'
 alias gpulli='git pull && git submodule update --init --recursive --remote'
 
