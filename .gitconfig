@@ -1,2 +1,6 @@
 [core]
   editor = nvim
+  excludesfile = /home/martin/.gitignore_global
+[user]
+  name = Martin Pijak (mp5516)
+  email = mp5516@intl.att.com

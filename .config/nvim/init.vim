@@ -11,7 +11,7 @@ let $GIT_SSL_NO_VERIFY = 'true'
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
     "if behind proxy use --insecure switch
-  silent !curl --insecure -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
@@ -71,6 +71,8 @@ Plug 'python-mode/python-mode'
 Plug 'vim-syntastic/syntastic'
 Plug 'wellle/targets.vim'
 Plug 'zxqfl/tabnine-vim'
+
+Plug 'davidhalter/jedi-vim'
 
 Plug 'kana/vim-textobj-user'
 Plug 'lucapette/vim-textobj-underscore' | Plug 'kana/vim-textobj-user'

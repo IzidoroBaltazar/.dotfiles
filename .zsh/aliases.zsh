@@ -4,6 +4,10 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 alias emx='emacs -nw'
 
+# Management of .dotfiles
+alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
+alias updateDotfiles='dgit reset --hard'
+
 alias tmux="TERM=screen-256color tmux"
 alias tmx='tmux attach || tmux new'
 alias ls='ls --color=auto'
@@ -28,6 +32,7 @@ pip-up() {
     pip freeze | awk '{printf "puts [string range %s 0 [expr [string first = %s]-1]]\n", $1, $1}' | tclsh | xargs pip install --upgrade
 }
 
+# GIT aliases
 alias gpull='git pull && git submodule update --recursive --remote'
 alias gpulli='git pull && git submodule update --init --recursive --remote'
 
