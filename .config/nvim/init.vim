@@ -70,6 +70,7 @@ Plug 'w0rp/ale'
 Plug 'python-mode/python-mode'
 Plug 'vim-syntastic/syntastic'
 Plug 'wellle/targets.vim'
+Plug 'zxqfl/tabnine-vim'
 
 Plug 'kana/vim-textobj-user'
 Plug 'lucapette/vim-textobj-underscore' | Plug 'kana/vim-textobj-user'
