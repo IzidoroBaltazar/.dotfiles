@@ -55,3 +55,6 @@ date2timestamp() {
     echo -n "$* "
     date --date="$*" +"%s"
 }
+
+# Weather
+alias weather='curl https://wttr.in/bratislava'
