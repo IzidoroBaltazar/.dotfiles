@@ -70,7 +70,9 @@ Plug 'w0rp/ale'
 Plug 'python-mode/python-mode'
 Plug 'vim-syntastic/syntastic'
 Plug 'wellle/targets.vim'
-Plug 'zxqfl/tabnine-vim'
+if system("uname -m") != "armv7l\n"
+    Plug 'zxqfl/tabnine-vim'
+endif
 
 Plug 'davidhalter/jedi-vim'
 
