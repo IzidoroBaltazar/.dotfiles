@@ -20,6 +20,7 @@ antigen bundle command-not-found
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen theme agnoster
+# working ASCII theme
+antigen theme gdsrosa/minimal_improved
 
 antigen apply
