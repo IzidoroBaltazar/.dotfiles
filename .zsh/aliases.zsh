@@ -56,5 +56,8 @@ date2timestamp() {
     date --date="$*" +"%s"
 }
 
+# better alternatives
+alias top=htop
+
 # Weather
 alias weather='curl https://wttr.in/bratislava'
