@@ -8,7 +8,7 @@ alias emx='emacs -nw'
 alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 alias updateDotfiles='dgit reset --hard'
 
-alias tmux="TERM=screen-256color tmux"
+alias tmux="TERM=tmux-256color tmux"
 alias tmx='tmux attach || tmux new'
 alias ls='ls --color=auto'
 alias ll='ls -la'
