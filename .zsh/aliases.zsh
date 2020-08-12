@@ -44,7 +44,7 @@ gdelbranch() {
 
 alias es='sudo sysctl -w vm.max_map_count=262144'
 tunnel_notebook() {
-    ssh -X -i ~/stuff/ssh/ml-key.pem ubuntu@$@ -L 0.0.0.0:8888:localhost:8888'
+    ssh -X -i ~/stuff/ssh/ml-key.pem ubuntu@$@ -L 0.0.0.0:8888:localhost:8888
 }
 
 alias juno='jupyter notebook'
