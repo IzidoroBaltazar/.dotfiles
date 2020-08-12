@@ -27,6 +27,8 @@ alias ctrlc='xclip -selection c'
 alias ctrlv='xclip -selection c -o'
 
 alias venv3='mkvirtualenv -p python3'
+alias workon='conda activate'
+alias envs='conda env list'
 
 pip-up() {
     pip freeze | awk '{printf "puts [string range %s 0 [expr [string first = %s]-1]]\n", $1, $1}' | tclsh | xargs pip install --upgrade
@@ -41,7 +43,9 @@ gdelbranch() {
 }
 
 alias es='sudo sysctl -w vm.max_map_count=262144'
-alias tunnel_amazon='ssh -X -i ~/stuff/ssh/ml-key.pem ubuntu@ec2-35-158-142-68.eu-central-1.compute.amazonaws.com -L 0.0.0.0:8888:localhost:8888'
+tunnel_notebook() {
+    ssh -X -i ~/stuff/ssh/ml-key.pem ubuntu@$@ -L 0.0.0.0:8888:localhost:8888'
+}
 
 alias juno='jupyter notebook'
 
