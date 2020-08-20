@@ -37,6 +37,7 @@ Plug 'tell-k/vim-autopep8'
 Plug 'fidian/hexmode'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'jnurmine/Zenburn'
 
 Plug 'justinmk/vim-sneak'
 Plug 'matze/vim-move'
@@ -63,6 +64,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+
+Plug 'zah/nim.vim'
 
 Plug 'vim-ruby/vim-ruby'
 "Plug 'maksimr/vim-jsbeautify'
@@ -394,7 +397,7 @@ endif
 
 " common leader mappings
 let mapleader = ','
-map <Leader>l :set invlist!<CR>
+" map <Leader>l :set invlist!<CR>
 map <Leader>n :set nu!<CR>
 map <Leader>N :set rnu!<CR>
 map <Leader>I :set diffopt-=iwhite<CR>
@@ -458,7 +461,8 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Theme
 syntax enable
-colorscheme seoul256
+" colorscheme seoul256
+colorscheme zenburn
 set background=dark
 set termguicolors
 
