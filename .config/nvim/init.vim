@@ -455,7 +455,7 @@ nmap <C-b> :buffer 1<Enter>
 inoremap {<CR> {<CR>}<C-o>O
 
 let g:python_host_prog = '/home/martin/anaconda3/envs/python2/bin/python'
-let g:python3_host_prog = '/home/martin/anaconda3/bin/python3'
+let g:python3_host_prog = '/home/martin/anaconda3/envs/python3/bin/python3'
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
