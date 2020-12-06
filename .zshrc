@@ -12,7 +12,6 @@ source ~/.zsh/keybind.zsh
 
 antigen use oh-my-zsh
 
-antigen bundle git
 antigen bundle heroku
 antigen bundle pip
 antigen bundle lein
@@ -20,8 +19,6 @@ antigen bundle command-not-found
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
-# working ASCII theme
-antigen theme gdsrosa/minimal_improved
 
 antigen apply
 
@@ -39,6 +36,11 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-if [[ -a /usr/loca/bin/starship ]]; then
+if [[ -f /usr/local/bin/starship ]]; then
     eval "$(starship init zsh)"
+else
+    antigen bundle git
+    # working ASCII theme
+    antigen theme gdsrosa/minimal_improved
+    antigen apply
 fi
