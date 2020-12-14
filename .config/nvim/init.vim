@@ -85,7 +85,7 @@ Plug 'kana/vim-textobj-indent'          | Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'            | Plug 'kana/vim-textobj-user'
 
 Plug 'alaviss/nim.nvim'
-Plug 'ashisha/image.vim'
+Plug 'chienfuchen32/image.vim'
 
 call plug#end()
 
