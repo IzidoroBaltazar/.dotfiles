@@ -4,9 +4,6 @@
 # Environment variables for Java
 #export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
-# Enable color in grep
-export GREP_OPTIONS='--color=auto'
-
 export PATH=$PATH:${HOME}/anaconda3/bin:/snap/bin/:${HOME}/balena-cli
 
 export EDITOR=nvim
