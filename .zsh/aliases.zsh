@@ -65,3 +65,4 @@ alias top=htop
 
 # Weather
 alias weather='curl https://wttr.in/bratislava'
+alias check_dns='sudo tcpdump port 53'
