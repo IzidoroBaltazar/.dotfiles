@@ -4,7 +4,7 @@ scriptencoding utf-8
 " Automatically install vim-plug and run PlugInstall if vim-plug not found
 "
 "This parameter might be necessary behind Proxy
-let $GIT_SSL_NO_VERIFY = 'true'
+"let $GIT_SSL_NO_VERIFY = 'true'
 
 "autocmd FileType javascript set formatprg=prettier\ --stdin
 "autocmd BufWritePre *.js :normal gggqG
@@ -454,8 +454,8 @@ nmap <C-b> :buffer 1<Enter>
 "filetype plugin indent on
 inoremap {<CR> {<CR>}<C-o>O
 
-let g:python_host_prog = '/home/martin/anaconda3/envs/python2/bin/python'
-let g:python3_host_prog = '/home/martin/anaconda3/envs/python3/bin/python3'
+"let g:python_host_prog = '/home/martin/anaconda3/envs/python2/bin/python'
+let g:python3_host_prog = '/usr/bin/python'
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 

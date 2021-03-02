@@ -1,16 +1,16 @@
 # Activate the auto-suggestions
 #source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh_conf/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Add custom completion scripts
-fpath=(~/.zsh/completion $fpath)
-fpath=(/usr/local/share/zsh/site-functions $fpath)
+fpath=(~/.zsh_conf/completion $fpath)
+fpath=(/usr/local/share.zsh_conf/site-functions $fpath)
 
 autoload -Uz compinit && compinit
 
 # Enable completion caching
 zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path ~/.zsh/cache
+zstyle ':completion::complete:*' cache-path ~/.zsh_conf/cache
 
 # Fallback to built in ls colors
 zstyle ':completion:*' list-colors ''
