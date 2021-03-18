@@ -26,9 +26,9 @@ alias cpwd='openssl rand -base64'
 alias ctrlc='xclip -selection c'
 alias ctrlv='xclip -selection c -o'
 
-alias venv3='mkvirtualenv -p python3'
-alias workon='conda activate'
-alias envs='conda env list'
+alias venv3='mkvirtualenv -p python'
+# alias workon='conda activate'
+# alias envs='conda env list'
 
 pip-up() {
     pip freeze | awk '{printf "puts [string range %s 0 [expr [string first = %s]-1]]\n", $1, $1}' | tclsh | xargs pip install --upgrade
@@ -62,6 +62,9 @@ date2timestamp() {
 
 # better alternatives
 alias top=htop
+
+# serve files
+alias serve_files='python -m http.server 8000'
 
 # Weather
 alias weather='curl https://wttr.in/bratislava'
