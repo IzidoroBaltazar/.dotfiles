@@ -46,6 +46,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'nvie/vim-flake8'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdtree'
 Plug 'sickill/vim-pasta'
 
 Plug 'sts10/vim-mustard'
@@ -408,6 +409,12 @@ map <Leader>s :set spell!<CR>
 map <Leader>p :set paste!<CR>
 map <Leader>m :call SwitchMouse()<CR>
 
+" NERDTree
+nnoremap <leader>t :NERDTreeFocus<CR>
+nnoremap <C-d> :NERDTree<CR>
+nnoremap <C-q> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
 " use leader to interact with the system clipboard
 set clipboard+=unnamed
 set clipboard+=unnamedplus
@@ -456,6 +463,7 @@ inoremap {<CR> {<CR>}<C-o>O
 
 "let g:python_host_prog = '/home/martin/anaconda3/envs/python2/bin/python'
 let g:python3_host_prog = '/usr/bin/python'
+let g:ruby_host_prog = '/usr/bin/ruby'
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
